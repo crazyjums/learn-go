@@ -1,4 +1,4 @@
-package main
+package learn_sync
 
 import (
 	"fmt"
@@ -83,6 +83,47 @@ func FetchWith10Goroutine() {
 			}
 		}()
 	}
+	wg.Wait()
+	close(pageNumChan)
+
+	fmt.Println(len(results))
+	fmt.Println("cost time:", time.Since(start))
+}
+
+func FetchWith10Goroutine2() {
+	var results = make([]string, 0)
+	var wg sync.WaitGroup
+
+	var pageResultChan = make(chan []string, 10)
+	var pageNumChan = make(chan int, 1)
+	pageNumChan <- 1
+
+	start := time.Now()
+	for i := 0; i < 100; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for {
+				page := <-pageNumChan
+				page++
+				pageNumChan <- page
+				//fmt.Printf(" %v page: %v \n", getGoroutineID(), page)
+
+				result := FetchDataByPage(page)
+				if len(result) == 0 {
+					break
+				}
+				pageResultChan <- result
+			}
+		}()
+	}
+
+	go func() {
+		for e := range pageResultChan {
+			results = append(results, e...)
+		}
+	}()
+
 	wg.Wait()
 	close(pageNumChan)
 

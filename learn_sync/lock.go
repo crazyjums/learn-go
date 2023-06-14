@@ -1,4 +1,4 @@
-package main
+package learn_sync
 
 import (
 	"fmt"
@@ -175,7 +175,7 @@ func SyncOnce(i int) *foo {
 }
 
 func main() {
-	//得到汇编代码 go tool compile -N -l -S main.go
+	//得到汇编代码 go tool compile -N -l -S lock.go
 
 	//WithNoLock()
 	//WithMutexLock()
@@ -193,7 +193,7 @@ func main() {
 			f := SyncOnce(i)
 			log.Printf("f addr = %p\n", f)
 			wg.Done()
-		}(i+1)
+		}(i + 1)
 	}
 	wg.Wait()
 }
