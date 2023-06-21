@@ -11,7 +11,7 @@ func cal() {
 	//变量转换时允许溢出，符号位变为1，转为补码后恰好等于 -128。
 	//
 	//对于有符号整型，最高位是是符号位，计算机用补码表示负数。补码 = 原码取反加一。
-	fmt.Println(b)//-128
+	fmt.Println(b) //-128
 }
 
 func main() {
@@ -22,5 +22,4 @@ func main() {
 	)
 	fmt.Println(a, b, c, d, e)
 	cal()
-
 }
