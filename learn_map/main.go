@@ -1,4 +1,4 @@
-package main
+package learn_map
 
 import (
 	"crypto/md5"
@@ -64,9 +64,15 @@ func ValueIsAny() {
 	fmt.Println(m, m1, string(b))
 }
 
+type Student struct {
+	Name string
+	Age  int
+}
+
 func main() {
-	InitMapByLiteral()
-	ReadValue()
-	InitMapByMake()
-	ValueIsAny()
+	//InitMapByLiteral()
+	//ReadValue()
+	//InitMapByMake()
+	//ValueIsAny()
+
 }
