@@ -1,4 +1,4 @@
-package main
+package learn_slice
 
 import "fmt"
 
@@ -15,8 +15,8 @@ func main() {
 	a1 := []int{1, 2, 3, 4, 5}
 	printSlice("a1", a1)
 	a2 := modArray(a1)
-	printSlice("a2", a2)
-	printSlice("a1", a1)
+	printSlice("a2", a2) // a2 和 a1 指向同一个底层数组，所以 a2 的修改会影响到 a1
+	printSlice("a1", a1) // a2 和 a1 指向同一个底层数组，所以 a1 的修改会影响到 a2
 }
 
 func modArray(a []int) []int {

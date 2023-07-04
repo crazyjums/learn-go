@@ -1,4 +1,4 @@
-package main
+package learn_struct
 
 import (
 	"encoding/json"
