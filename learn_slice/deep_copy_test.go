@@ -9,3 +9,7 @@ func TestDeepCopy(t *testing.T) {
 func TestDeepCopyPtr(t *testing.T) {
 	DeepCopyPtr()
 }
+
+func TestAppend(t *testing.T) {
+	Append()
+}
