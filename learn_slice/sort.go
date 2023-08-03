@@ -149,6 +149,44 @@ func QuickSort(arr []int) []int {
 	return arr
 }
 
+func QuickSortV2(nums []int) []int {
+	if len(nums) <= 1 {
+		return nums
+	}
+
+	realQuickSortV2(nums, 0, len(nums)-1)
+	return nums
+}
+
+func realQuickSortV2(nums []int, start, end int) {
+	if start >= end {
+		return
+	}
+
+	pIndex := partition(nums, start, end)
+	realQuickSortV2(nums, start, pIndex-1)
+	realQuickSortV2(nums, pIndex+1, end)
+}
+
+func partition(nums []int, start, end int) int {
+	pivot := nums[start]
+	left, right := start+1, end
+	for left <= right {
+		for left <= right && nums[left] <= pivot {
+			left++
+		}
+		for left <= right && nums[right] > pivot {
+			right--
+		}
+		if left <= right {
+			nums[left], nums[right] = nums[right], nums[left]
+		}
+	}
+
+	nums[start], nums[right] = nums[right], nums[start]
+	return right
+}
+
 func CountingSort(arr []int) []int {
 	n := len(arr)
 

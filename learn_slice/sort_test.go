@@ -28,6 +28,10 @@ func TestQuickSort(t *testing.T) {
 	fmt.Println(QuickSort([]int{11, 9, 1, 5, 3, 0, 22, 4, 6, 7, 8}))
 }
 
+func TestQuickSortV2(t *testing.T) {
+	fmt.Println(QuickSortV2([]int{11, 9, 1, 5, 3, 0, 22, 4, 6, 7, 8, 8}))
+}
+
 func TestCountingSort(t *testing.T) {
 	fmt.Println(CountingSort([]int{11, 9, 1, 5, 3, 0, 22, 4, 6, 7, 8}))
 }
